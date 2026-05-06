@@ -8,7 +8,14 @@ import dashboardRoutes from "./routes/dashboard.routes.js";
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  ? process.env.ALLOWED_ORIGINS.split(",") 
+  : ["http://localhost:5173"];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use(express.json());
 
 app.use("/auth", authRoutes);
