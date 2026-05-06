@@ -2,6 +2,7 @@ import "dotenv/config";
 
 import app from "./app.js";
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+const port = process.env.PORT || 8080
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Backend listening on port ${port}`);
 });
